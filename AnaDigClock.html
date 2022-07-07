@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style> 
+ 
+ .body{
+    margin: 40px auto;
+    background-color: rgba(7, 1, 1, 0.907);
+ }
+ #clock{
+text-align: center;
+font-size: 30px;
+position: relative;
+ }
+
+#hour,
+#minute,
+#second {
+  position: absolute;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  transform-origin: bottom;
+}
+#hour {
+  width: 10px;
+  height: 100px;
+  top: 100px;
+  left: 770px;
+  opacity: 1;
+  background-color: rgb(67, 224, 5);
+}
+#minute {
+  width: 10px;
+  height: 100px;
+  top: 100px;
+  left: 770px;
+  opacity: 0.8;
+  background-color: rgb(67, 224, 5);
+}
+#second {
+  width: 10px;
+  height: 100px;
+  top: 100px;
+  left: 770px;
+  opacity: 0.2;
+  overflow: hidden;
+  background-color: rgb(67, 224, 5);
+}
+.analog-clock{
+            position: relative;
+            width: 320px;
+            height: 320px;
+            border: 5px solid red;
+            border-radius: 50%;
+            margin: 0 auto;
+            font-size: 40px;
+        }
+        .analog-clock:hover{
+            box-shadow: 0 10px 32px 0 rgb(231, 6, 235);
+            border-radius: 10px;
+            border: 10px;
+        }
+.analog-clock .hour{
+            --rotation: 0;
+            position: absolute;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transform: rotate(var(--rotation));
+        }
+       .analog-clock  .hour-1{ --rotation:30deg; color: rgb(64, 240, 0);}
+       .analog-clock   .hour-2{ --rotation:60deg;color: rgb(64, 240, 0); }
+       .analog-clock   .hour-3{ --rotation:90deg;color: rgb(64, 240, 0); } 
+       .analog-clock   .hour-4{ --rotation:120deg;color: rgb(64, 240, 0);} 
+       .analog-clock   .hour-5{ --rotation:150deg;color: rgb(64, 240, 0); } 
+       .analog-clock   .hour-6{ --rotation:180deg; color: rgb(64, 240, 0);} 
+       .analog-clock   .hour-7{ --rotation:210deg; color: rgb(64, 240, 0);} 
+       .analog-clock   .hour-8{ --rotation:240deg; color: rgb(64, 240, 0);} 
+       .analog-clock   .hour-9{ --rotation:270deg;color: rgb(64, 240, 0); } 
+       .analog-clock   .hour-10{ --rotation:300deg;color: rgb(64, 240, 0); } 
+       .analog-clock   .hour-11{ --rotation:330deg;color: rgb(64, 240, 0); } 
+       .analog-clock   .hour-12{ --rotation:360deg;color: rgb(64, 240, 0); } 
+       .pionter{
+            position: relative;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: rgb(67, 224, 5);
+            top: 144px;
+            left: 155px;
+       }
+       #borderop:hover{
+        box-shadow: 0 10px 32px 0 rgb(231, 6, 235);
+       }
+  </style>
+</head>
+<body class="body">
+    <div class="analog-clock">
+        <div class="pionter"></div>
+        <div class="hour hour-1">1</div>
+        <div class="hour hour-2">2</div>
+        <div class="hour hour-3">3</div>
+        <div class="hour hour-4">4</div>
+        <div class="hour hour-5">5</div>
+        <div class="hour hour-6">6</div>
+        <div class="hour hour-7">7</div>
+        <div class="hour hour-8">8</div>
+        <div class="hour hour-9">9</div>
+        <div class="hour hour-10">10</div>
+        <div class="hour hour-11">11</div>
+        <div class="hour hour-12">12</div>
+    </div>
+    <script>
+        setInterval(functioningClock , 500);
+    function functioningClock(){
+        var time = new Date();
+        var hours = time.getHours()
+        var minutes = time.getMinutes()
+        var seconds = time.getSeconds()
+        var AMPM = 0
+        if(hours < 12){
+            AMPM = "AM"
+        }
+        if(hours > 12){
+            AMPM = "PM"
+        }
+        if(hours > 12){
+            hours = hours - 12
+        }
+        if(hours < 10){
+            hours = "0" + hours
+        }
+        if(minutes < 10){
+            minutes = "0" + minutes
+        }
+        if(seconds < 10){
+            seconds = "0" + seconds
+        }
+        document.getElementById("clock").innerHTML = hours + ":" +minutes +":"+ seconds +" "+ AMPM ;
+    }
+        setInterval(() => {
+  d = new Date(); 
+  hr = d.getHours();
+  min = d.getMinutes();
+  sec = d.getSeconds();
+  hr_rotation = 30 * hr + min / 2;
+  min_rotation = 6 * min;
+  sec_rotation = 6 * sec;
+
+  hour.style.transform = `rotate(${hr_rotation}deg)`;
+  minute.style.transform = `rotate(${min_rotation}deg)`;
+  second.style.transform = `rotate(${sec_rotation}deg)`;
+}, 1000);
+
+    </script>
+  <div id="clockContainer">
+    <div id="hour"></div>
+    <div id="minute"></div>
+    <div id="second"></div>
+  </div>
+  <br>
+
+  <div id="borderop" style="border: solid 2px rgb(238, 14, 14); padding: 20px;margin-left: 600px; margin-right: 600px;border-radius: 20px;">
+    <div id="clock" style="color: rgb(64, 240, 0);"></div>
+</div>
+</body>
+</html>
